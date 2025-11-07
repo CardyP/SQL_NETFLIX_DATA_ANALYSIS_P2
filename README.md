@@ -170,7 +170,7 @@ GROUP BY 1;
 
 **Objective:** Count the number of content items in each genre.
 
-### 10.Find each year and the average numbers of content release in India on netflix. 
+### 10.Find each year and the average numbers of content release in United States on netflix. 
 return top 5 year with highest avg content release!
 
 ```sql
@@ -180,10 +180,10 @@ SELECT
     COUNT(show_id) AS total_release,
     ROUND(
         COUNT(show_id)::numeric /
-        (SELECT COUNT(show_id) FROM netflix WHERE country = 'India')::numeric * 100, 2
+        (SELECT COUNT(show_id) FROM netflix WHERE country = 'United States')::numeric * 100, 2
     ) AS avg_release
 FROM netflix
-WHERE country = 'India'
+WHERE country = 'United States'
 GROUP BY country, release_year
 ORDER BY avg_release DESC
 LIMIT 5;
@@ -222,14 +222,14 @@ WHERE casts LIKE '%Salman Khan%'
 
 **Objective:** Count the number of movies featuring 'Salman Khan' in the last 10 years.
 
-### 14. Find the Top 10 Actors Who Have Appeared in the Highest Number of Movies Produced in India
+### 14. Find the Top 10 Actors Who Have Appeared in the Highest Number of Movies Produced in United States
 
 ```sql
 SELECT 
     UNNEST(STRING_TO_ARRAY(casts, ',')) AS actor,
     COUNT(*)
 FROM netflix
-WHERE country = 'India'
+WHERE country = 'United States'
 GROUP BY actor
 ORDER BY COUNT(*) DESC
 LIMIT 10;
@@ -266,18 +266,3 @@ GROUP BY category;
 This analysis provides a comprehensive view of Netflix's content and can help inform content strategy and decision-making.
 
 
-
-## Author - Zero Analyst
-
-This project is part of my portfolio, showcasing the SQL skills essential for data analyst roles. If you have any questions, feedback, or would like to collaborate, feel free to get in touch!
-
-### Stay Updated and Join the Community
-
-For more content on SQL, data analysis, and other data-related topics, make sure to follow me on social media and join our community:
-
-- **YouTube**: [Subscribe to my channel for tutorials and insights](https://www.youtube.com/@zero_analyst)
-- **Instagram**: [Follow me for daily tips and updates](https://www.instagram.com/zero_analyst/)
-- **LinkedIn**: [Connect with me professionally](https://www.linkedin.com/in/najirr)
-- **Discord**: [Join our community to learn and grow together](https://discord.gg/36h5f2Z5PK)
-
-Thank you for your support, and I look forward to connecting with you!
